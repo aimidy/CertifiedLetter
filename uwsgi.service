@@ -1,0 +1,12 @@
+[Unit]
+Description=uWSGI Emperor service
+
+[Service]
+ExecStart=/bin/bash -c 'cd /srv/app/ && source .venv/bin/activate && uwsgi --ini uwsgi_config.ini'
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
